@@ -1,9 +1,9 @@
-alias c='clear'
+alias c='clear && neofetch'
 alias i='uvx ipython'
 alias n='nvim'
 
-alias vimrc="n ~/.config/nvim/init.vim"
 alias zshrc="n ~/.zshrc"
+alias vimrc="n ~/.config/nvim/init.vim"
 
 alias wip="git commit -am 'wip' --no-verify"
 alias unwip="git reset HEAD~1"
