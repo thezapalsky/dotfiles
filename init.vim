@@ -1,5 +1,3 @@
-" ~/.config/nvim/init.vim
-
 set number relativenumber
 inoremap jj <Esc>
 command! Vimrc edit $MYVIMRC
@@ -12,6 +10,7 @@ Plug 'nvim-lualine/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 Plug 'kdheepak/lazygit.nvim'
+Plug 'nvim-tree/nvim-tree.lua'
 call plug#end()
 
 lua require('theme_switcher').apply_theme()
@@ -22,8 +21,8 @@ require('lualine').setup {
   options = {
     theme = 'auto',
     icons_enabled = true,
-    component_separators = { left = '', right = '' },
-    section_separators = { left = '', right = '' },
+    component_separators = '' ,
+    section_separators = '' ,
     globalstatus = true,
   },
   sections = {
@@ -49,3 +48,25 @@ EOF
 
 " lazygit
 nnoremap <leader>gg :LazyGit<CR>
+
+" nvim-tree setup
+lua << EOF
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+
+require("nvim-tree").setup({
+  sort_by = "case_sensitive",
+  view = {
+    width = 30,
+    side = "left",
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+EOF
+nnoremap <C-n> :NvimTreeToggle<CR>
